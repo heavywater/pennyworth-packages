@@ -1,7 +1,7 @@
 require 'bunchr'
 
 Bunchr.build_dir   = '/tmp/build'
-Bunchr.install_dir = '/opt/sensu'
+Bunchr.install_dir = '/opt/heavywater'
 
 Bunchr.load_recipes Dir['recipes/**/*.rake']
 
@@ -53,5 +53,23 @@ Bunchr::Packages.new do |t|
   t.config_files << '/etc/logrotate.d/sensu'
 end
 
+Bunchr::Packages.new do |t|
+  t.name = 'ruby'
+  t.version = ENV['RUBY_VERSION'] || '1.9.3'
+  t.iteration = ENV['BUILD_NUMBER'] || 'p125'
+
+  t.vendor   = 'Heavy Water operations'
+  t.url      = 'http://www.hw-ops.com'
+  t.description = 'Ruby 1.9.3-p125 packaged by HW'
+
+  case t.ohai.platform_family
+  when 'debian'
+    t.scripts[:after_install]  = 'pkg_scripts/deb/postinst'
+  end
+
+  t.include_software('ruby')
+  t.files << Bunchr.install_dir
+end
+
 # default task executed when `rake` is run with no args.
-task :default => ['packages:sensu']
+task :default => ['packages:ruby']
