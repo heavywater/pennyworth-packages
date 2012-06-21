@@ -19,3 +19,6 @@ doc/
 
 # Bunchr artifacts
 *.tar.gz
+build/
+# Vagrant config file (individual per machine)
+.vagrant
