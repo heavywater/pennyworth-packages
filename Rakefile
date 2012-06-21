@@ -1,6 +1,11 @@
 require 'bunchr'
 
-Bunchr.build_dir   = '/tmp/build'
+
+current_directory = File.dirname(__FILE__)
+build_directory = File.expand_path(File.join(current_directory, "build"))
+FileUtils.mkdir_p(build_directory)
+
+Bunchr.build_dir   = build_directory
 Bunchr.install_dir = '/opt/heavywater'
 
 Bunchr.load_recipes Dir['recipes/**/*.rake']
@@ -33,7 +38,7 @@ Bunchr::Packages.new do |t|
   t.include_software('sensu_configs')
   t.include_software('sensu_bin_stubs')
 
-  t.files << Bunchr.install_dir    # /opt/sensu
+  t.files << Bunchr.install_dir
   t.files << '/usr/share/sensu'
   t.files << '/var/log/sensu'
 
@@ -54,7 +59,7 @@ Bunchr::Packages.new do |t|
 end
 
 Bunchr::Packages.new do |t|
-  t.name = 'heavywater-ruby'
+  t.name = 'heavywater-ruby1.9.3-full'
   t.version = ENV['RUBY_VERSION'] || '1.9.3'
   t.iteration = ENV['BUILD_NUMBER'] || 'p125'
 
@@ -74,4 +79,4 @@ Bunchr::Packages.new do |t|
 end
 
 # default task executed when `rake` is run with no args.
-task :default => ['packages:ruby']
+task :default => ['packages:heavywater-ruby1.9.3-full']
