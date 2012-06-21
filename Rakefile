@@ -1,8 +1,9 @@
 require 'bunchr'
 
 
-current_directory = File.dirname(__FILE__)
-build_directory = File.expand_path(File.join(current_directory, "build"))
+# current_directory = File.dirname(__FILE__)
+# build_directory = File.expand_path(File.join(current_directory,"build"))
+build_directory = "/tmp/build"
 FileUtils.mkdir_p(build_directory)
 
 Bunchr.build_dir   = build_directory

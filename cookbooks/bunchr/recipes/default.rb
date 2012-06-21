@@ -16,14 +16,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+package "curl"
+
+directory "/opt/heavywater" do
+  owner "vagrant"
+  group "vagrant"
+end
 
 execute "bundle install --deployment --binstubs" do
   cwd "/vagrant"
   user "vagrant"
+  group "vagrant"
   path %w{chef opscode}.map {|p| ::File.join("/opt", p, "embedded", "bin") }
 end
 
-execute "bin/rake" do
+execute "bundle exec rake" do
   cwd "/vagrant"
   user "vagrant"
+  group "vagrant"
+  path %w{chef opscode}.map {|p| ::File.join("/opt", p, "embedded", "bin") }
 end
