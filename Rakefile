@@ -54,12 +54,14 @@ Bunchr::Packages.new do |t|
 end
 
 Bunchr::Packages.new do |t|
-  t.name = 'ruby'
+  t.name = 'heavywater-ruby'
   t.version = ENV['RUBY_VERSION'] || '1.9.3'
   t.iteration = ENV['BUILD_NUMBER'] || 'p125'
 
-  t.vendor   = 'Heavy Water operations'
-  t.url      = 'http://www.hw-ops.com'
+  t.category = "Languages"
+  t.license = "Ruby License"
+  t.vendor = 'Heavy Water operations'
+  t.url = 'http://www.hw-ops.com'
   t.description = 'Ruby 1.9.3-p125 packaged by HW'
 
   case t.ohai.platform_family
