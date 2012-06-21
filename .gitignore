@@ -18,7 +18,8 @@ _yardoc
 doc/
 
 # Bunchr artifacts
+*.deb
 *.tar.gz
-build/
+
 # Vagrant config file (individual per machine)
 .vagrant

@@ -17,5 +17,6 @@ Vagrant::Config.run do |config|
         :version => "10.12.0"
       }
     }
+    chef.log_level = :debug
   end
 end

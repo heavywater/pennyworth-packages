@@ -18,6 +18,10 @@
 #
 package "curl"
 
+directory "/tmp/build" do
+  action :delete
+end
+
 directory "/opt/heavywater" do
   owner "vagrant"
   group "vagrant"
