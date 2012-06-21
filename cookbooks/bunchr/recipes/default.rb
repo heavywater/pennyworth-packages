@@ -16,7 +16,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 package "curl"
+
+chef_gem "bundler"
 
 directory "/tmp/build" do
   action :delete

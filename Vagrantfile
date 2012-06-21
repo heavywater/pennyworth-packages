@@ -7,7 +7,8 @@ Vagrant::Config.run do |config|
   config.vm.network :hostonly, "192.168.33.10"
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "cookbooks"
-    chef.run_list = [ "recipe[build-essential]",
+    chef.run_list = [ "recipe[shell_out]",
+                      "recipe[build-essential]",
                       "recipe[chef_gem]",
                       "recipe[omnibus_updater]",
                       "recipe[bunchr]"
