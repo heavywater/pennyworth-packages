@@ -59,10 +59,9 @@ Bunchr::Packages.new do |t|
 end
 
 Bunchr::Packages.new do |t|
-  t.name = 'heavywater-ruby1.9.3-full'
-  t.version = ENV['RUBY_VERSION'] || '1.9.3'
-  t.iteration = ENV['BUILD_NUMBER'] || 'p125'
-
+  t.name = 'heavywater-ruby'
+  t.version = ENV['RUBY_VERSION'] || '1.9.3p125'
+  t.iteration = ENV['BUILD_NUMBER'] || '0' # Should come from Jenkins
   t.category = "Languages"
   t.license = "Ruby License"
   t.vendor = 'Heavy Water operations'
@@ -79,4 +78,4 @@ Bunchr::Packages.new do |t|
 end
 
 # default task executed when `rake` is run with no args.
-task :default => ['packages:heavywater-ruby1.9.3-full']
+task :default => ['packages:heavywater-ruby']
